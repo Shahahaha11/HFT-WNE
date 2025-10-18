@@ -1,0 +1,206 @@
+---
+author: "Piotr Wójcik"
+title: "My first document in Quarto"
+date: 10/07/2025
+date-format: "MMM D, YYYY"
+format: html
+---
+<!-- each Quatro document starts with a YAML header (above).
+ In the minimum variant one just needs to specify 
+ the output format of the document
+ 
+You can change the format value in the YAML header to experiment with other formats.
+
+Try the following formats:
+
+    html: Renders the document as an HTML webpage.
+    pdf: Renders the document as a PDF. You will need to have LaTeX (or tinytex) installed on your computer to use this format.
+    docx: Renders the document as a Microsoft Word document.
+    pptx: Renders the document as a PowerPoint presentation.
+    revealjs: Renders the document as an HTML slideshow.
+    dashboard: Renders the document as an interactive dashboard.
+ -->
+
+<!-- In Markdown one has to use standard HTML comments (like this) -->
+<!-- single hash mark # here defines the first level header -->
+
+# Introduction
+
+To use Quarto/Markdown you should install the [`quarto`](https://quarto.org/docs/get-started/) program. And to use it in VS Code you need to have the `Quarto VS Code Extension`. 
+
+In python it would also require installing the following libraries most commonly required by quarto: `jupyter`, `ipykernel`, `nbformat`, `nbclient`, `pyyaml`.
+
+Once the document is ready to generate a result just click `Preview` button on right hand side of the top bar of VS Code.
+
+The text inside Quarto documents is written in Markdown. Markdown is a simple set of conventions for adding formatting to plain text.
+
+## This starts a new subchapter
+
+Your document can be organized in (sub)capters.
+One can also use itemization:
+
+* this is item 1,
+* there might be a second one,
+    + subitems are possible as well
+    + there might be more of them,
+* in fact as many as you wish.
+
+Numbered lists are also possible:
+
+1. this is item number 1 again,
+2. there might be a second one,
+    + subitems are possible as well
+    + there might be more of them,
+        + subsubitems are also allowed
+3. in fact as many as you wish.
+ 
+
+## Second subchapter
+
+If you want to emphasize text -- use a star \* for *italics* or double star \*\* for **bolded text** (slash \\ turns off a special meaning of characters). 
+
+For more details please check the [Markdown basics](https://quarto.org/docs/authoring/markdown-basics.html), [Quarto guide](https://quarto.org/docs/guide/) or [Tutorials](https://quarto.org/docs/get-started/hello/vscode.html).
+
+
+## Subchapter no 3 -- code chunks
+
+But the most interesting feature is the possibility of creating a `dynamic document` -- mix text with python code and python results -- this is done in so called `code chunks` -- see below for examples.
+
+### Example 1
+
+This chunk prints the code, evaluates it and prints the results 
+
+```{python}
+import numpy as np
+import pandas as pd
+
+# Generate 1000 random values from a standard normal distribution
+a = np.random.normal(size=1000)
+
+# Use pandas to get a summary
+summary = pd.Series(a).describe()
+print(summary)
+```
+
+### Example 2
+
+By using an additional chunk option `#|eval: false` you can for example see just the code and not the results (the code is printed, but not executed/evaluated):
+
+```{python}
+#|eval: false
+import numpy as np
+import pandas as pd
+
+# Generate 1000 random values from a standard normal distribution
+a = np.random.normal(size=1000)
+
+# Use pandas to get a summary
+summary = pd.Series(a).describe()
+print(summary)
+```
+
+### Example 3
+
+or the opposite -- by using the option `#|echo: false` you can see just the results and not the code
+
+```{python}
+#|echo: false
+import numpy as np
+import pandas as pd
+
+# Generate 1000 random values from a standard normal distribution
+a = np.random.normal(size=1000)
+
+# Use pandas to get a summary
+summary = pd.Series(a).describe()
+print(summary)
+```
+
+### Example 4
+
+you can load additional packages without showing that in the output file (CAUTION! packages should be installed BEFORE, e.g. in a console window):
+
+```{python}
+#|echo: false
+import yfinance as yf
+```
+
+### Example 5
+
+If you want to avoid warnings, you can use another chunk options `#/warning: false`. More options can be found here: [Quarto chunk execution options](https://quarto.org/docs/computations/execution-options.html)
+
+```{python}
+#|echo: false
+#|warning: false
+
+import matplotlib.pyplot as plt
+```
+
+### Example 6
+
+Then you can use functions from the loaded package in the following chunks, e.g.
+
+```{python}
+AAPL = yf.download("AAPL", # symbol/ticker
+                    start = "2005-01-01",
+                    end = "2025-09-30")
+AAPL.tail()
+```
+
+### Example 7
+
+One can also generate plots in the output document.
+
+```{python}
+# lets change column names so that they are more readible
+AAPL.columns = [f"{price.lower()}_{ticker}" for price, ticker in AAPL.columns]
+
+# and make a plot
+AAPL['close_AAPL'].plot(title = "Quotations of Apple (2005-2025)")
+```
+
+
+### Example 8
+
+When generating plots, one can use additional plotting options
+
+```{python}
+#| echo: false
+#| label: fig-AAPL
+#| fig-cap: "Adjusted close of AAPL"
+#| fig-align: "right"
+#| fig-height: 4
+#| fig-width: 6
+
+plt.plot(AAPL['close_AAPL'], color='darkblue')
+plt.title("Adjusted close price of Apple")
+plt.grid(True, linestyle='--', linewidth=0.5)
+plt.xticks(rotation=45)
+plt.tight_layout()
+plt.show()
+```
+
+
+### Example 9
+
+One can also refer to results of Python objects inline in the text.
+
+Inline expressions should be confined to simple values that you have pre-computed within normal code cells (rather than function calls that do non-trivial work). This is because the protocol used for inline expressions is not compatible with some Python libraries (especially those that use multi-threading or multi-processing).
+
+```{python}
+#| echo: false
+
+date1 = AAPL.index[-1].date()
+```
+
+For example: on `{python} date1.strftime('%Y-%m-%d')` Apple quotations started with the price of `{python} round(AAPL['open_AAPL'][-1].item(), 2)`\$ to finish a day on a level of `{python} round(AAPL['close_AAPL'][-1].item(), 2)`\$ with the volume of trading equal to `{python} int(AAPL['volume_AAPL'][-1])` units.
+
+## Dollars in Quarto/Markdown
+
+We had to mask a dollar (\$) sign in the above examples as it has a special meaning in Markdown -- very similar to LaTeX -- it can be used to indicate a mathematical formulea, for example: $x_{1+s}^{2*d}$, $\frac{y^2}{x_{1t}}$, $y_t = \alpha_0 + \phi_1 x_{1,t} + \epsilon_t$.
+
+For more examples see: [here](https://qmd4sci.njtierney.com/math.html) or anything else.
+
+## DIY Exercises
+
+Based on the contents of this document create presentation slides in two forms: PPTX and revealjs. Add more contents for example using graphs or tables
