@@ -70,7 +70,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="HFD00_1_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="HFD00_1_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="HFD00_1_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="HFD00_1_files/libs/bootstrap/bootstrap-9e3ffae467580fdb927a41352e75a2e0.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="HFD00_1_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -204,7 +204,7 @@ Try the following formats:
 <section id="example-1" class="level3">
 <h3 class="anchored" data-anchor-id="example-1">Example 1</h3>
 <p>This chunk prints the code, evaluates it and prints the results</p>
-<div id="03d5f01a" class="cell" data-execution_count="1">
+<div id="b4e7b873" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -216,13 +216,13 @@ Try the following formats:
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(summary)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>count    1000.000000
-mean        0.029459
-std         1.004492
-min        -3.282159
-25%        -0.610787
-50%         0.061986
-75%         0.691063
-max         3.276907
+mean       -0.044214
+std         0.977896
+min        -3.244801
+25%        -0.696492
+50%        -0.055908
+75%         0.649413
+max         2.979099
 dtype: float64</code></pre>
 </div>
 </div>
@@ -230,7 +230,7 @@ dtype: float64</code></pre>
 <section id="example-2" class="level3">
 <h3 class="anchored" data-anchor-id="example-2">Example 2</h3>
 <p>By using an additional chunk option <code>#|eval: false</code> you can for example see just the code and not the results (the code is printed, but not executed/evaluated):</p>
-<div id="c69033a0" class="cell" data-execution_count="2">
+<div id="3e25c9a0" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -245,16 +245,16 @@ dtype: float64</code></pre>
 <section id="example-3" class="level3">
 <h3 class="anchored" data-anchor-id="example-3">Example 3</h3>
 <p>or the opposite – by using the option <code>#|echo: false</code> you can see just the results and not the code</p>
-<div id="54d22b65" class="cell" data-execution_count="3">
+<div id="ed1ceecb" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>count    1000.000000
-mean        0.053951
-std         0.993917
-min        -3.198564
-25%        -0.615814
-50%         0.047055
-75%         0.719311
-max         2.944587
+mean       -0.081479
+std         0.980166
+min        -3.409914
+25%        -0.703115
+50%        -0.068533
+75%         0.593234
+max         3.007910
 dtype: float64</code></pre>
 </div>
 </div>
@@ -270,15 +270,16 @@ dtype: float64</code></pre>
 <section id="example-6" class="level3">
 <h3 class="anchored" data-anchor-id="example-6">Example 6</h3>
 <p>Then you can use functions from the loaded package in the following chunks, e.g.</p>
-<div id="fbb7571f" class="cell" data-execution_count="6">
+<div id="0deff956" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>AAPL <span class="op">=</span> yf.download(<span class="st">"AAPL"</span>, <span class="co"># symbol/ticker</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>                    start <span class="op">=</span> <span class="st">"2005-01-01"</span>,</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                    end <span class="op">=</span> <span class="st">"2025-09-30"</span>)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>AAPL.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>YF.download() has changed argument auto_adjust default to True</code></pre>
+</div>
 <div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\ptwoj\AppData\Local\Temp\ipykernel_23644\4214951745.py:1: FutureWarning: YF.download() has changed argument auto_adjust default to True
-  AAPL = yf.download("AAPL", # symbol/ticker
-[*********************100%***********************]  1 of 1 completed</code></pre>
+<pre><code>[*********************100%***********************]  1 of 1 completed</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -362,12 +363,12 @@ dtype: float64</code></pre>
 <section id="example-7" class="level3">
 <h3 class="anchored" data-anchor-id="example-7">Example 7</h3>
 <p>One can also generate plots in the output document.</p>
-<div id="5a576049" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets change column names so that they are more readible</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>AAPL.columns <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ticker<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> price, ticker <span class="kw">in</span> AAPL.columns]</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and make a plot</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>AAPL[<span class="st">'close_AAPL'</span>].plot(title <span class="op">=</span> <span class="st">"Quotations of Apple (2005-2025)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="4887be76" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets change column names so that they are more readible</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>AAPL.columns <span class="op">=</span> [<span class="ss">f"</span><span class="sc">{</span>price<span class="sc">.</span>lower()<span class="sc">}</span><span class="ss">_</span><span class="sc">{</span>ticker<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> price, ticker <span class="kw">in</span> AAPL.columns]</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># and make a plot</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>AAPL[<span class="st">'close_AAPL'</span>].plot(title <span class="op">=</span> <span class="st">"Quotations of Apple (2005-2025)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
