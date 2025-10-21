@@ -12,8 +12,8 @@ html-math-method: katex
 ---
 
 # Introduction
-Model : Two State MS GJR GARCH with Poisson Jumps
-First, to clarify what the possion jump does for this model. 
+Model : Two State MS GJR GARCH with Poisson Jumps. The idea of the project is to model variance of commodities with the objective of improving forecasts during times of uncertainty.
+First, to elaborate what the possion jump does for this model. 
 We add a jump term to the conditional variance before computing densities of the Markov switch. We are de-meaning the returns by the expected jump and adding jump variance on top of the diffusive variance. Our $h_t$ is the diffusion and not the entire variance itself.
 The model assumes mean :$u_t = r_t - \lambda\mu J$
 
