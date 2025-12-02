@@ -1,0 +1,1949 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.8.25">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>hfd_07</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="HFD_07_files/libs/clipboard/clipboard.min.js"></script>
+<script src="HFD_07_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="HFD_07_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="HFD_07_files/libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="HFD_07_files/libs/quarto-html/popper.min.js"></script>
+<script src="HFD_07_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="HFD_07_files/libs/quarto-html/anchor.min.js"></script>
+<link href="HFD_07_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="HFD_07_files/libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="HFD_07_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="HFD_07_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="HFD_07_files/libs/bootstrap/bootstrap-d6a003b94517c951b2d65075d42fb01b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+
+
+
+<br> <br> <font color="darkred" size="7.5">
+<center>
+<b> Quantitative strategies on high-frequency data </b>
+</center>
+</font> <font color="darkred" size="5">
+<center>
+<ol start="7" type="1">
+<li>Optimization of a simple strategy
+</li></ol></center>
+</font> <br> <font size="5">
+<center>
+prof. Piotr Wójcik
+</center>
+</font> <br> <font size="5">
+<center>
+academic year 2025/2026
+</center>
+</font>
+
+<div id="e2172839-3b6f-46a5-b026-77304830d666" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;executionInfo&quot;,&quot;value&quot;:{&quot;elapsed&quot;:3676,&quot;status&quot;:&quot;ok&quot;,&quot;timestamp&quot;:1736937692260,&quot;user&quot;:{&quot;displayName&quot;:&quot;Piotr Wójcik&quot;,&quot;userId&quot;:&quot;10545455785895861324&quot;},&quot;user_tz&quot;:-60}}" data-execution_count="40">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets load the necessary libraries</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> quantstats <span class="im">as</span> qs</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>warnings.simplefilter(action<span class="op">=</span><span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">UserWarning</span>)  <span class="co"># ignore warnings</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>warnings.simplefilter(action<span class="op">=</span><span class="st">"ignore"</span>, category<span class="op">=</span><span class="pp">RuntimeWarning</span>)  <span class="co"># ignore runtime warnings</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># lets add the functions path to sys.path</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sys.path.append(<span class="st">'functions'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="38d86a66" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets load the quotations of currency futures</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>currencies <span class="op">=</span> pd.read_parquet(<span class="st">"currencies.parquet"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>currencies.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">datetime</th>
+<th data-quarto-table-cell-role="th">A6</th>
+<th data-quarto-table-cell-role="th">E6</th>
+<th data-quarto-table-cell-role="th">B6</th>
+<th data-quarto-table-cell-role="th">C6</th>
+<th data-quarto-table-cell-role="th">J6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>2025-07-01 00:01:00+00:00</td>
+<td>0.65694</td>
+<td>1.17902</td>
+<td>1.37390</td>
+<td>0.734813</td>
+<td>0.006950</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>2025-07-01 00:02:00+00:00</td>
+<td>0.65688</td>
+<td>1.17893</td>
+<td>1.37396</td>
+<td>0.734765</td>
+<td>0.006950</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>2025-07-01 00:03:00+00:00</td>
+<td>0.65670</td>
+<td>1.17886</td>
+<td>1.37386</td>
+<td>0.734727</td>
+<td>0.006951</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>2025-07-01 00:04:00+00:00</td>
+<td>0.65671</td>
+<td>1.17891</td>
+<td>1.37397</td>
+<td>0.734819</td>
+<td>0.006951</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>2025-07-01 00:05:00+00:00</td>
+<td>0.65664</td>
+<td>1.17883</td>
+<td>1.37391</td>
+<td>0.734781</td>
+<td>0.006949</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="88081443" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets set the datetime index</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>currencies[<span class="st">'datetime'</span>] <span class="op">=</span> pd.to_datetime(currencies[<span class="st">'datetime'</span>])</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>currencies.set_index(<span class="st">'datetime'</span>, inplace <span class="op">=</span> <span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="bc625930" class="cell" data-execution_count="20">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># data includes quotations (weighted average of bid and ask)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># of futures contracts for:</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># E6 - EUR/USD</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># J6 - JPY/USD</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># A6 - AUD/USD</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="co"># C6 - CAD/USD</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># B6 - GPB/USD</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># one-minute data for one quarter (2025Q3)</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># specifications of the contracts:</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="co"># E6 - point value = 125 000$, transaction cost = 10$</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># J6 - point value = 12 500 000$, transaction cost = 10$</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a><span class="co"># A6 - point value = 100 000$, transaction cost = 10$</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="co"># C6 - point value = 100 000$, transaction cost = 10$</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="co"># B6 - point value = 62 500$, transaction cost = 10$</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="co"># IMPORTANT !!</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># these currencies are traded almost 24 hours a day (except weekends)</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co"># with a break between 17:00 and 18:00 (New York time - same as in the data)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="1ccd4d4d" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's split the data into training and test sets</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># let's assume that data for the first two months (July and August) is for training</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and data for September is for testing</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>currencies_train <span class="op">=</span> currencies[(currencies.index.month <span class="op">==</span> <span class="dv">7</span>) <span class="op">|</span> (currencies.index.month <span class="op">==</span> <span class="dv">8</span>)]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>currencies_test <span class="op">=</span> currencies[currencies.index.month <span class="op">==</span> <span class="dv">9</span>]</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>currencies_train.tail()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">A6</th>
+<th data-quarto-table-cell-role="th">E6</th>
+<th data-quarto-table-cell-role="th">B6</th>
+<th data-quarto-table-cell-role="th">C6</th>
+<th data-quarto-table-cell-role="th">J6</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">datetime</th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-08-31 23:55:00+00:00</th>
+<td>0.65442</td>
+<td>1.17045</td>
+<td>1.35197</td>
+<td>0.727966</td>
+<td>0.006806</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2025-08-31 23:56:00+00:00</th>
+<td>0.65454</td>
+<td>1.17059</td>
+<td>1.35209</td>
+<td>0.728009</td>
+<td>0.006806</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-08-31 23:57:00+00:00</th>
+<td>0.65459</td>
+<td>1.17073</td>
+<td>1.35220</td>
+<td>0.728035</td>
+<td>0.006807</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">2025-08-31 23:58:00+00:00</th>
+<td>0.65465</td>
+<td>1.17075</td>
+<td>1.35228</td>
+<td>0.728056</td>
+<td>0.006807</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2025-08-31 23:59:00+00:00</th>
+<td>0.65471</td>
+<td>1.17082</td>
+<td>1.35229</td>
+<td>0.728051</td>
+<td>0.006808</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="901d325a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># E6 - EUR/USD</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co"># J6 - JPY/USD</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># A6 - AUD/USD</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># C6 - CAD/USD</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co"># B6 - GPB/USD</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Lets take E6 (EUR/USD) as an example</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>E6 <span class="op">=</span> currencies_train[<span class="st">'E6'</span>]</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># check sample break in session</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>plt.plot(E6[<span class="dv">960</span>:<span class="dv">1200</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-7-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="8e362f67" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># initial assumptions about</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># assumption 1</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># we do not use the first 5 minutes of the session (18:01-18:05)</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and the last 5 minutes before the break (16:56-17:00) </span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co"># let's insert missing data there</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>E6.loc[E6.between_time(<span class="st">"18:01"</span>, <span class="st">"18:05"</span>).index] <span class="op">=</span> np.nan</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>E6.loc[E6.between_time(<span class="st">"16:56"</span>, <span class="st">"17:00"</span>).index] <span class="op">=</span> np.nan</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># let's see how the plot looks after inserting missing data</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>plt.plot(E6[<span class="dv">960</span>:<span class="dv">1200</span>])</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co"># now the break in the data is longer</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\ptwoj\AppData\Local\Temp\ipykernel_39416\1762704899.py:8: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  E6.loc[E6.between_time("18:01", "18:05").index] = np.nan
+C:\Users\ptwoj\AppData\Local\Temp\ipykernel_39416\1762704899.py:9: SettingWithCopyWarning: 
+A value is trying to be set on a copy of a slice from a DataFrame
+
+See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
+  E6.loc[E6.between_time("16:56", "17:00").index] = np.nan</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-8-output-2.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="ca6eaf88" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># assumption 2</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we do not trade during the first quarter of an hour after the break (18:00-18:15)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and in the last quarter of an hour before the end of the session (16:46-17:00).</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's assume that we CLOSE ALL POSITIONS before the break (at 16:45).</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># so finally, the position will always be 0 between 16:46 and 18:15.</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co"># similarly as earlier, let's create an object named "pos_flat" </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># = 1 if position has to be flat (= 0) - we do not trade</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># = 0 otherwise</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="co"># let's fill it first with zeros</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>pos_flat <span class="op">=</span> np.zeros(<span class="bu">len</span>(E6))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d68a075d" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># put our assumptions into pos_flat</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># we do not trade in the first quarter of an hour after the break (18:00-18:15)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># and in the last quarter of an hour after the break (16:46-17:00).</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Of course, we also do not trade during the break (17:00-18:00)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's create a time mask based on the E6 index</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>breaks <span class="op">=</span> (E6.index.time <span class="op">&gt;=</span> pd.to_datetime(<span class="st">"16:46"</span>).time()) <span class="op">&amp;</span> <span class="op">\</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>          (E6.index.time <span class="op">&lt;=</span> pd.to_datetime(<span class="st">"18:15"</span>).time())</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Assign 1 to pos_flat where the breaks mask is True</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>pos_flat[breaks] <span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co"># let's see an example break in the session from the perspective of pos_flat</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize <span class="op">=</span> (<span class="dv">10</span>,<span class="dv">6</span>))</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>plt.plot(pos_flat[<span class="dv">960</span>:<span class="dv">1200</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="97585453" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets check which weekdays we have data for</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>dweek_ <span class="op">=</span> E6.index.dayofweek <span class="op">+</span> <span class="dv">1</span>  <span class="co"># Adjust so that 0 = Monday, ..., 6 = Sunday</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(dweek_.value_counts())</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co"># no Saturdays in the data</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>datetime
+4    12959
+3    12957
+2    12955
+1    11520
+5     9188
+7     3771
+Name: count, dtype: int64</code></pre>
+</div>
+</div>
+<div id="a87be19f" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets create a time_ object (vector of times)</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>time_ <span class="op">=</span> E6.index.time</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># and let's fill the pos_flat vector with ones for weekends</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>pos_flat[((dweek_ <span class="op">==</span> <span class="dv">5</span>) <span class="op">&amp;</span> (time_ <span class="op">&gt;</span> pd.to_datetime(<span class="st">'17:00'</span>).time())) <span class="op">|</span>      <span class="co"># end of Friday</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>          (dweek_ <span class="op">==</span> <span class="dv">6</span>) <span class="op">|</span>                                                  <span class="co"># whole Saturday (just in case)</span></span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>          ((dweek_ <span class="op">==</span> <span class="dv">7</span>) <span class="op">&amp;</span> (time_ <span class="op">&lt;=</span> pd.to_datetime(<span class="st">'18:00'</span>).time()))] <span class="op">=</span> <span class="dv">1</span> <span class="co"># beginning of Sunday</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="strategy-1-two-intersecting-moving-averages" class="level3">
+<h3 class="anchored" data-anchor-id="strategy-1-two-intersecting-moving-averages">Strategy 1: two intersecting moving averages</h3>
+<div id="c942e529" class="cell" data-execution_count="33">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we check various parameter combinations in a loop</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> mySR(x, scale):</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.sqrt(scale) <span class="op">*</span> np.nanmean(x) <span class="op">/</span> np.nanstd(x)</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>fastEMA_parameters <span class="op">=</span> [<span class="dv">15</span>, <span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">60</span>, <span class="dv">75</span>, <span class="dv">90</span>]</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>slowEMA_parameters <span class="op">=</span> [<span class="dv">90</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">240</span>, <span class="dv">300</span>, <span class="dv">360</span>, <span class="dv">420</span>]</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dataframe to store results</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>summary_all_2MAs <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Loop over different parameter combinations</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> fastEMA <span class="kw">in</span> fastEMA_parameters:</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> slowEMA <span class="kw">in</span> slowEMA_parameters:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>                <span class="co"># ensure that fastEMA is less than slowEMA</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>                <span class="cf">if</span> fastEMA <span class="op">&gt;=</span> slowEMA:</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>                    <span class="cf">continue</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f"fastEMA = </span><span class="sc">{</span>fastEMA<span class="sc">}</span><span class="ss">, slowEMA = </span><span class="sc">{</span>slowEMA<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>                <span class="co"># We calculate the appropriate EMA</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>                fastEMA_values <span class="op">=</span> E6.ewm(span <span class="op">=</span> fastEMA).mean()</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                slowEMA_values <span class="op">=</span> E6.ewm(span <span class="op">=</span> slowEMA).mean()</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Insert NaNs wherever the original price is missing</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>                fastEMA_values[E6.isna()] <span class="op">=</span> np.nan</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>                slowEMA_values[E6.isna()] <span class="op">=</span> np.nan </span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate position for momentum strategy</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>                cond2b_mom_long <span class="op">=</span> fastEMA_values.shift(<span class="dv">1</span>) <span class="op">&gt;</span> slowEMA_values.shift(<span class="dv">1</span>)</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>                <span class="co"># let's add filters that check for the presence of NaN values</span></span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>                fastEMA_nonmiss <span class="op">=</span> fastEMA_values.shift(<span class="dv">1</span>).notna()</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>                slowEMA_nonmiss <span class="op">=</span> slowEMA_values.shift(<span class="dv">1</span>).notna()</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Now we can add these conditions to our strategies</span></span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>                <span class="co"># if any of the values is missing,</span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>                <span class="co"># we cannot make a position decision</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>                pos_mom <span class="op">=</span> np.where(fastEMA_nonmiss <span class="op">&amp;</span> slowEMA_nonmiss,</span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>                                   np.where(cond2b_mom_long, <span class="dv">1</span>, <span class="op">-</span><span class="dv">1</span>),</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>                                   np.nan)</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>                pos_mr <span class="op">=</span> <span class="op">-</span>pos_mom </span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Set position to 0 where pos_flat is 1</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>                pos_mom[pos_flat <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>                pos_mr[pos_flat <span class="op">==</span> <span class="dv">1</span>] <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate gross pnl</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom <span class="op">=</span> np.where(np.isnan(pos_mom <span class="op">*</span> E6.diff()), <span class="dv">0</span>, pos_mom <span class="op">*</span> E6.diff() <span class="op">*</span> <span class="dv">125000</span>) </span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr <span class="op">=</span> np.where(np.isnan(pos_mr <span class="op">*</span> E6.diff()), <span class="dv">0</span>, pos_mr <span class="op">*</span> E6.diff() <span class="op">*</span> <span class="dv">125000</span>) </span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>                <span class="co"># point value for E6</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate number of transactions</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>                ntrans <span class="op">=</span> np.<span class="bu">abs</span>(np.diff(pos_mom, prepend <span class="op">=</span> <span class="dv">0</span>))</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate net pnl</span></span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom <span class="op">=</span> pnl_gross_mom <span class="op">-</span> ntrans <span class="op">*</span> <span class="dv">10</span>  <span class="co"># cost $10 per transaction on E6</span></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr <span class="op">=</span> pnl_gross_mr <span class="op">-</span> ntrans <span class="op">*</span> <span class="dv">10</span>  <span class="co"># cost $10 per transaction on E6</span></span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Aggregate to daily data</span></span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom <span class="op">=</span> pd.Series(pnl_gross_mom)</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom.index <span class="op">=</span> E6.index.time</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom_d <span class="op">=</span> pnl_gross_mom.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr <span class="op">=</span> pd.Series(pnl_gross_mr)</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr.index <span class="op">=</span> E6.index.time</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr_d <span class="op">=</span> pnl_gross_mr.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom <span class="op">=</span> pd.Series(pnl_net_mom)</span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom.index <span class="op">=</span> E6.index.time</span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom_d <span class="op">=</span> pnl_net_mom.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr <span class="op">=</span> pd.Series(pnl_net_mr)</span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr.index <span class="op">=</span> E6.index.time</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr_d <span class="op">=</span> pnl_net_mr.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>                ntrans <span class="op">=</span> pd.Series(ntrans)</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>                ntrans.index <span class="op">=</span> E6.index.time</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>                ntrans_d <span class="op">=</span> ntrans.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate Sharpe Ratio and PnL</span></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>                gross_SR_mom <span class="op">=</span> mySR(pnl_gross_mom_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>                net_SR_mom <span class="op">=</span> mySR(pnl_net_mom_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>                gross_PnL_mom <span class="op">=</span> pnl_gross_mom_d.<span class="bu">sum</span>()</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>                net_PnL_mom <span class="op">=</span> pnl_net_mom_d.<span class="bu">sum</span>()</span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a>                gross_SR_mr <span class="op">=</span> mySR(pnl_gross_mr_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>                net_SR_mr <span class="op">=</span> mySR(pnl_net_mr_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>                gross_PnL_mr <span class="op">=</span> pnl_gross_mr_d.<span class="bu">sum</span>()</span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>                net_PnL_mr <span class="op">=</span> pnl_net_mr_d.<span class="bu">sum</span>()</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>                av_daily_ntrans <span class="op">=</span> ntrans_d.mean()</span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Collect necessary results into one object</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a>                summary <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'fastEMA'</span>: fastEMA,</span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'slowEMA'</span>: slowEMA,</span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'period'</span>: <span class="st">'2013-08'</span>,</span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_SR_mom'</span>: gross_SR_mom,</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_SR_mom'</span>: net_SR_mom,</span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_PnL_mom'</span>: gross_PnL_mom,</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_PnL_mom'</span>: net_PnL_mom,</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_SR_mr'</span>: gross_SR_mr,</span>
+<span id="cb14-103"><a href="#cb14-103" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_SR_mr'</span>: net_SR_mr,</span>
+<span id="cb14-104"><a href="#cb14-104" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_PnL_mr'</span>: gross_PnL_mr,</span>
+<span id="cb14-105"><a href="#cb14-105" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_PnL_mr'</span>: net_PnL_mr,</span>
+<span id="cb14-106"><a href="#cb14-106" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'av_daily_ntrans'</span>: av_daily_ntrans</span>
+<span id="cb14-107"><a href="#cb14-107" aria-hidden="true" tabindex="-1"></a>                }, index<span class="op">=</span>[<span class="dv">0</span>])</span>
+<span id="cb14-108"><a href="#cb14-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-109"><a href="#cb14-109" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Append results to the summary</span></span>
+<span id="cb14-110"><a href="#cb14-110" aria-hidden="true" tabindex="-1"></a>                summary_all_2MAs <span class="op">=</span> pd.concat([summary_all_2MAs, summary], ignore_index<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>fastEMA = 15, slowEMA = 90
+fastEMA = 15, slowEMA = 120
+fastEMA = 15, slowEMA = 150
+fastEMA = 15, slowEMA = 180
+fastEMA = 15, slowEMA = 240
+fastEMA = 15, slowEMA = 300
+fastEMA = 15, slowEMA = 360
+fastEMA = 15, slowEMA = 420
+fastEMA = 20, slowEMA = 90
+fastEMA = 20, slowEMA = 120
+fastEMA = 20, slowEMA = 150
+fastEMA = 20, slowEMA = 180
+fastEMA = 20, slowEMA = 240
+fastEMA = 20, slowEMA = 300
+fastEMA = 20, slowEMA = 360
+fastEMA = 20, slowEMA = 420
+fastEMA = 30, slowEMA = 90
+fastEMA = 30, slowEMA = 120
+fastEMA = 30, slowEMA = 150
+fastEMA = 30, slowEMA = 180
+fastEMA = 30, slowEMA = 240
+fastEMA = 30, slowEMA = 300
+fastEMA = 30, slowEMA = 360
+fastEMA = 30, slowEMA = 420
+fastEMA = 45, slowEMA = 90
+fastEMA = 45, slowEMA = 120
+fastEMA = 45, slowEMA = 150
+fastEMA = 45, slowEMA = 180
+fastEMA = 45, slowEMA = 240
+fastEMA = 45, slowEMA = 300
+fastEMA = 45, slowEMA = 360
+fastEMA = 45, slowEMA = 420
+fastEMA = 60, slowEMA = 90
+fastEMA = 60, slowEMA = 120
+fastEMA = 60, slowEMA = 150
+fastEMA = 60, slowEMA = 180
+fastEMA = 60, slowEMA = 240
+fastEMA = 60, slowEMA = 300
+fastEMA = 60, slowEMA = 360
+fastEMA = 60, slowEMA = 420
+fastEMA = 75, slowEMA = 90
+fastEMA = 75, slowEMA = 120
+fastEMA = 75, slowEMA = 150
+fastEMA = 75, slowEMA = 180
+fastEMA = 75, slowEMA = 240
+fastEMA = 75, slowEMA = 300
+fastEMA = 75, slowEMA = 360
+fastEMA = 75, slowEMA = 420
+fastEMA = 90, slowEMA = 120
+fastEMA = 90, slowEMA = 150
+fastEMA = 90, slowEMA = 180
+fastEMA = 90, slowEMA = 240
+fastEMA = 90, slowEMA = 300
+fastEMA = 90, slowEMA = 360
+fastEMA = 90, slowEMA = 420</code></pre>
+</div>
+</div>
+<div id="b1ecd23a" class="cell" data-execution_count="34">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets see top 5 stategies with respect to net_SR_mr</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>summary_all_2MAs.sort_values(by <span class="op">=</span> <span class="st">'net_SR_mr'</span>,</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>                            ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">fastEMA</th>
+<th data-quarto-table-cell-role="th">slowEMA</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">gross_SR_mom</th>
+<th data-quarto-table-cell-role="th">net_SR_mom</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mom</th>
+<th data-quarto-table-cell-role="th">net_PnL_mom</th>
+<th data-quarto-table-cell-role="th">gross_SR_mr</th>
+<th data-quarto-table-cell-role="th">net_SR_mr</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mr</th>
+<th data-quarto-table-cell-role="th">net_PnL_mr</th>
+<th data-quarto-table-cell-role="th">av_daily_ntrans</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">54</th>
+<td>90</td>
+<td>420</td>
+<td>2013-08</td>
+<td>0.556943</td>
+<td>-1.864757</td>
+<td>1090.0</td>
+<td>-3781.25</td>
+<td>-0.556943</td>
+<td>-3.132304</td>
+<td>-1090.0</td>
+<td>-5938.75</td>
+<td>9.169811</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">47</th>
+<td>75</td>
+<td>420</td>
+<td>2013-08</td>
+<td>0.696816</td>
+<td>-1.863804</td>
+<td>1385.0</td>
+<td>-3866.25</td>
+<td>-0.696816</td>
+<td>-3.459843</td>
+<td>-1385.0</td>
+<td>-6613.75</td>
+<td>9.886792</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">44</th>
+<td>75</td>
+<td>240</td>
+<td>2013-08</td>
+<td>0.364396</td>
+<td>-2.505579</td>
+<td>745.0</td>
+<td>-5366.25</td>
+<td>-0.364396</td>
+<td>-3.487748</td>
+<td>-745.0</td>
+<td>-6833.75</td>
+<td>11.509434</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">31</th>
+<td>45</td>
+<td>420</td>
+<td>2013-08</td>
+<td>0.321648</td>
+<td>-2.715375</td>
+<td>662.5</td>
+<td>-5868.75</td>
+<td>-0.321648</td>
+<td>-3.629808</td>
+<td>-662.5</td>
+<td>-7171.25</td>
+<td>12.301887</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">50</th>
+<td>90</td>
+<td>180</td>
+<td>2013-08</td>
+<td>0.386670</td>
+<td>-2.781942</td>
+<td>772.5</td>
+<td>-5798.75</td>
+<td>-0.386670</td>
+<td>-3.796595</td>
+<td>-772.5</td>
+<td>-7321.25</td>
+<td>12.377358</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="bc2f58b4" class="cell" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets import a function written by the lecturer</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># to visualize the strategy results in a form of a heatmap</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functions.plot_heatmap <span class="im">import</span> plot_heatmap</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div id="d3684b1a" class="cell" data-execution_count="36">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># we wil use it to visualize net SR values</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># for the mean reversion strategy (MR)</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>plot_heatmap(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    summary_all_2MAs,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    value_col <span class="op">=</span> <span class="st">'net_SR_mom'</span>,</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    index_col <span class="op">=</span> <span class="st">'fastEMA'</span>,</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    columns_col <span class="op">=</span> <span class="st">'slowEMA'</span>,</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">'Net Sharpe Ratio (MR strategy)'</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co"># none of the parameter combinations</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co"># provides a positive net SR value</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-16-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="7cf165e6" class="cell" data-execution_count="37">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># zobaczmy teraz jak wygląda net PnL dla strategii MR</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>plot_heatmap(</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    summary_all_2MAs,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    value_col <span class="op">=</span> <span class="st">'net_PnL_mr'</span>,</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>    index_col <span class="op">=</span> <span class="st">'fastEMA'</span>,</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    columns_col <span class="op">=</span> <span class="st">'slowEMA'</span>,</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> <span class="st">"coolwarm"</span>,</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">'Net PnL (strategia MR)'</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-17-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="strategy-2-volatility-breakout" class="level3">
+<h3 class="anchored" data-anchor-id="strategy-2-volatility-breakout">Strategy 2: volatility breakout</h3>
+<div id="53955dad" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># lets use fastEMA as the strategy signal</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># and use slowEMA+/-m*std as volatility boundaries</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> functions.position_VB <span class="im">import</span> positionVB</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a><span class="co"># we check various parameter combinations in a loop</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>signalEMA_parameters <span class="op">=</span> [<span class="dv">20</span>, <span class="dv">30</span>, <span class="dv">45</span>, <span class="dv">60</span>, <span class="dv">75</span>, <span class="dv">90</span>]</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>slowEMA_parameters <span class="op">=</span> [<span class="dv">90</span>, <span class="dv">120</span>, <span class="dv">150</span>, <span class="dv">180</span>, <span class="dv">240</span>]</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>volat_sd_parameters <span class="op">=</span> [<span class="dv">60</span>, <span class="dv">90</span>, <span class="dv">120</span>]</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>m_parameters <span class="op">=</span> [<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>]</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a><span class="co"># create a dataframe to store results</span></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a>summary_all_breakout <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a><span class="co"># loop over different parameter combinations</span></span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> signalEMA <span class="kw">in</span> signalEMA_parameters:</span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="ss">f"signalEMA = </span><span class="sc">{</span>signalEMA<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> slowEMA <span class="kw">in</span> slowEMA_parameters:</span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> volat_sd <span class="kw">in</span> volat_sd_parameters:</span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> m <span class="kw">in</span> m_parameters:</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>               </span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a>                <span class="co"># We calculate the appropriate EMA</span></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>                signalEMA_values <span class="op">=</span> E6.ewm(span <span class="op">=</span> signalEMA).mean().to_numpy()</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>                slowEMA_values <span class="op">=</span> E6.ewm(span <span class="op">=</span> slowEMA).mean().to_numpy()</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a>                                </span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a>                <span class="co"># We calculate the standard deviation</span></span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a>                volat_sd_values <span class="op">=</span> E6.rolling(window <span class="op">=</span> volat_sd).std().to_numpy()</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Insert NaNs wherever the original price is missing</span></span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a>                signalEMA_values[E6.isna()] <span class="op">=</span> np.nan</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a>                slowEMA_values[E6.isna()] <span class="op">=</span> np.nan </span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a>                volat_sd_values[E6.isna()] <span class="op">=</span> np.nan </span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate position for momentum strategy</span></span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a>                pos_mom <span class="op">=</span> positionVB(signal <span class="op">=</span> signalEMA_values, </span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>                                     lower <span class="op">=</span> slowEMA_values <span class="op">-</span> m <span class="op">*</span> volat_sd_values,</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a>                                     upper <span class="op">=</span> slowEMA_values <span class="op">+</span> m <span class="op">*</span> volat_sd_values,</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>                                     pos_flat <span class="op">=</span> pos_flat,</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>                                     strategy <span class="op">=</span> <span class="st">"mom"</span>)</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>                </span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>                pos_mr <span class="op">=</span> <span class="op">-</span>pos_mom </span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate gross pnl</span></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom <span class="op">=</span> np.where(np.isnan(pos_mom <span class="op">*</span> E6.diff()), <span class="dv">0</span>, pos_mom <span class="op">*</span> E6.diff() <span class="op">*</span> <span class="dv">125000</span>) </span>
+<span id="cb20-46"><a href="#cb20-46" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr <span class="op">=</span> np.where(np.isnan(pos_mr <span class="op">*</span> E6.diff()), <span class="dv">0</span>, pos_mr <span class="op">*</span> E6.diff() <span class="op">*</span> <span class="dv">125000</span>) </span>
+<span id="cb20-47"><a href="#cb20-47" aria-hidden="true" tabindex="-1"></a>                <span class="co"># point value for E6</span></span>
+<span id="cb20-48"><a href="#cb20-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-49"><a href="#cb20-49" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate number of transactions</span></span>
+<span id="cb20-50"><a href="#cb20-50" aria-hidden="true" tabindex="-1"></a>                ntrans <span class="op">=</span> np.<span class="bu">abs</span>(np.diff(pos_mom, prepend <span class="op">=</span> <span class="dv">0</span>))</span>
+<span id="cb20-51"><a href="#cb20-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-52"><a href="#cb20-52" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate net pnl</span></span>
+<span id="cb20-53"><a href="#cb20-53" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom <span class="op">=</span> pnl_gross_mom <span class="op">-</span> ntrans <span class="op">*</span> <span class="dv">10</span>  <span class="co"># cost $10 per transaction on E6</span></span>
+<span id="cb20-54"><a href="#cb20-54" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr <span class="op">=</span> pnl_gross_mr <span class="op">-</span> ntrans <span class="op">*</span> <span class="dv">10</span>  <span class="co"># cost $10 per transaction on E6</span></span>
+<span id="cb20-55"><a href="#cb20-55" aria-hidden="true" tabindex="-1"></a>                  </span>
+<span id="cb20-56"><a href="#cb20-56" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Aggregate to daily data</span></span>
+<span id="cb20-57"><a href="#cb20-57" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom <span class="op">=</span> pd.Series(pnl_gross_mom)</span>
+<span id="cb20-58"><a href="#cb20-58" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom.index <span class="op">=</span> E6.index.time</span>
+<span id="cb20-59"><a href="#cb20-59" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mom_d <span class="op">=</span> pnl_gross_mom.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb20-60"><a href="#cb20-60" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr <span class="op">=</span> pd.Series(pnl_gross_mr)</span>
+<span id="cb20-61"><a href="#cb20-61" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr.index <span class="op">=</span> E6.index.time</span>
+<span id="cb20-62"><a href="#cb20-62" aria-hidden="true" tabindex="-1"></a>                pnl_gross_mr_d <span class="op">=</span> pnl_gross_mr.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb20-63"><a href="#cb20-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-64"><a href="#cb20-64" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom <span class="op">=</span> pd.Series(pnl_net_mom)</span>
+<span id="cb20-65"><a href="#cb20-65" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom.index <span class="op">=</span> E6.index.time</span>
+<span id="cb20-66"><a href="#cb20-66" aria-hidden="true" tabindex="-1"></a>                pnl_net_mom_d <span class="op">=</span> pnl_net_mom.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb20-67"><a href="#cb20-67" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr <span class="op">=</span> pd.Series(pnl_net_mr)</span>
+<span id="cb20-68"><a href="#cb20-68" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr.index <span class="op">=</span> E6.index.time</span>
+<span id="cb20-69"><a href="#cb20-69" aria-hidden="true" tabindex="-1"></a>                pnl_net_mr_d <span class="op">=</span> pnl_net_mr.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb20-70"><a href="#cb20-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-71"><a href="#cb20-71" aria-hidden="true" tabindex="-1"></a>                ntrans <span class="op">=</span> pd.Series(ntrans)</span>
+<span id="cb20-72"><a href="#cb20-72" aria-hidden="true" tabindex="-1"></a>                ntrans.index <span class="op">=</span> E6.index.time</span>
+<span id="cb20-73"><a href="#cb20-73" aria-hidden="true" tabindex="-1"></a>                ntrans_d <span class="op">=</span> ntrans.groupby(E6.index.date).<span class="bu">sum</span>()</span>
+<span id="cb20-74"><a href="#cb20-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-75"><a href="#cb20-75" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Calculate Sharpe Ratio and PnL</span></span>
+<span id="cb20-76"><a href="#cb20-76" aria-hidden="true" tabindex="-1"></a>                gross_SR_mom <span class="op">=</span> mySR(pnl_gross_mom_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb20-77"><a href="#cb20-77" aria-hidden="true" tabindex="-1"></a>                net_SR_mom <span class="op">=</span> mySR(pnl_net_mom_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb20-78"><a href="#cb20-78" aria-hidden="true" tabindex="-1"></a>                gross_PnL_mom <span class="op">=</span> pnl_gross_mom_d.<span class="bu">sum</span>()</span>
+<span id="cb20-79"><a href="#cb20-79" aria-hidden="true" tabindex="-1"></a>                net_PnL_mom <span class="op">=</span> pnl_net_mom_d.<span class="bu">sum</span>()</span>
+<span id="cb20-80"><a href="#cb20-80" aria-hidden="true" tabindex="-1"></a>                gross_SR_mr <span class="op">=</span> mySR(pnl_gross_mr_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb20-81"><a href="#cb20-81" aria-hidden="true" tabindex="-1"></a>                net_SR_mr <span class="op">=</span> mySR(pnl_net_mr_d, scale<span class="op">=</span><span class="dv">252</span>)</span>
+<span id="cb20-82"><a href="#cb20-82" aria-hidden="true" tabindex="-1"></a>                gross_PnL_mr <span class="op">=</span> pnl_gross_mr_d.<span class="bu">sum</span>()</span>
+<span id="cb20-83"><a href="#cb20-83" aria-hidden="true" tabindex="-1"></a>                net_PnL_mr <span class="op">=</span> pnl_net_mr_d.<span class="bu">sum</span>()</span>
+<span id="cb20-84"><a href="#cb20-84" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-85"><a href="#cb20-85" aria-hidden="true" tabindex="-1"></a>                av_daily_ntrans <span class="op">=</span> ntrans_d.mean()</span>
+<span id="cb20-86"><a href="#cb20-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-87"><a href="#cb20-87" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Collect the necessary results into one object</span></span>
+<span id="cb20-88"><a href="#cb20-88" aria-hidden="true" tabindex="-1"></a>                summary <span class="op">=</span> pd.DataFrame({</span>
+<span id="cb20-89"><a href="#cb20-89" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'signalEMA'</span>: signalEMA,</span>
+<span id="cb20-90"><a href="#cb20-90" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'slowEMA'</span>: slowEMA,</span>
+<span id="cb20-91"><a href="#cb20-91" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'volat_sd'</span>: volat_sd,</span>
+<span id="cb20-92"><a href="#cb20-92" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'m'</span>: m,</span>
+<span id="cb20-93"><a href="#cb20-93" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'period'</span>: <span class="st">'2013-08'</span>,</span>
+<span id="cb20-94"><a href="#cb20-94" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_SR_mom'</span>: gross_SR_mom,</span>
+<span id="cb20-95"><a href="#cb20-95" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_SR_mom'</span>: net_SR_mom,</span>
+<span id="cb20-96"><a href="#cb20-96" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_PnL_mom'</span>: gross_PnL_mom,</span>
+<span id="cb20-97"><a href="#cb20-97" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_PnL_mom'</span>: net_PnL_mom,</span>
+<span id="cb20-98"><a href="#cb20-98" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_SR_mr'</span>: gross_SR_mr,</span>
+<span id="cb20-99"><a href="#cb20-99" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_SR_mr'</span>: net_SR_mr,</span>
+<span id="cb20-100"><a href="#cb20-100" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'gross_PnL_mr'</span>: gross_PnL_mr,</span>
+<span id="cb20-101"><a href="#cb20-101" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'net_PnL_mr'</span>: net_PnL_mr,</span>
+<span id="cb20-102"><a href="#cb20-102" aria-hidden="true" tabindex="-1"></a>                    <span class="st">'av_daily_ntrans'</span>: av_daily_ntrans</span>
+<span id="cb20-103"><a href="#cb20-103" aria-hidden="true" tabindex="-1"></a>                }, index<span class="op">=</span>[<span class="dv">0</span>])</span>
+<span id="cb20-104"><a href="#cb20-104" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-105"><a href="#cb20-105" aria-hidden="true" tabindex="-1"></a>                <span class="co"># Append the results to the summary</span></span>
+<span id="cb20-106"><a href="#cb20-106" aria-hidden="true" tabindex="-1"></a>                summary_all_breakout <span class="op">=</span> pd.concat([summary_all_breakout, summary], ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb20-107"><a href="#cb20-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-108"><a href="#cb20-108" aria-hidden="true" tabindex="-1"></a>    <span class="co"># it takes a while</span></span>
+<span id="cb20-109"><a href="#cb20-109" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ca 2.5 minutes</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>signalEMA = 20
+signalEMA = 30
+signalEMA = 45
+signalEMA = 60
+signalEMA = 75
+signalEMA = 90</code></pre>
+</div>
+</div>
+<div id="331ee7ae" class="cell" data-execution_count="42">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check 10 strategies with the best net_SR_mr</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>summary_all_breakout.sort_values(by <span class="op">=</span> <span class="st">'net_SR_mr'</span>, </span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                                 ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="42">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">signalEMA</th>
+<th data-quarto-table-cell-role="th">slowEMA</th>
+<th data-quarto-table-cell-role="th">volat_sd</th>
+<th data-quarto-table-cell-role="th">m</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">gross_SR_mom</th>
+<th data-quarto-table-cell-role="th">net_SR_mom</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mom</th>
+<th data-quarto-table-cell-role="th">net_PnL_mom</th>
+<th data-quarto-table-cell-role="th">gross_SR_mr</th>
+<th data-quarto-table-cell-role="th">net_SR_mr</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mr</th>
+<th data-quarto-table-cell-role="th">net_PnL_mr</th>
+<th data-quarto-table-cell-role="th">av_daily_ntrans</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">34</th>
+<td>20</td>
+<td>180</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-3.621237</td>
+<td>-4.259310</td>
+<td>-7368.75</td>
+<td>-8768.75</td>
+<td>3.621237</td>
+<td>2.966466</td>
+<td>7368.75</td>
+<td>5968.75</td>
+<td>2.641509</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">41</th>
+<td>20</td>
+<td>240</td>
+<td>90</td>
+<td>3</td>
+<td>2013-08</td>
+<td>-3.711346</td>
+<td>-4.463872</td>
+<td>-6047.50</td>
+<td>-7387.50</td>
+<td>3.711346</td>
+<td>2.932402</td>
+<td>6047.50</td>
+<td>4707.50</td>
+<td>2.528302</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">88</th>
+<td>30</td>
+<td>240</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-3.520322</td>
+<td>-4.194419</td>
+<td>-7257.50</td>
+<td>-8737.50</td>
+<td>3.520322</td>
+<td>2.830560</td>
+<td>7257.50</td>
+<td>5777.50</td>
+<td>2.792453</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">178</th>
+<td>60</td>
+<td>240</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-3.621270</td>
+<td>-4.410673</td>
+<td>-4401.25</td>
+<td>-5461.25</td>
+<td>3.621270</td>
+<td>2.798320</td>
+<td>4401.25</td>
+<td>3341.25</td>
+<td>2.000000</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">191</th>
+<td>75</td>
+<td>120</td>
+<td>60</td>
+<td>3</td>
+<td>2013-08</td>
+<td>-2.838911</td>
+<td>-3.001217</td>
+<td>-1073.75</td>
+<td>-1153.75</td>
+<td>2.838911</td>
+<td>2.667564</td>
+<td>1073.75</td>
+<td>993.75</td>
+<td>0.150943</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">105</th>
+<td>45</td>
+<td>120</td>
+<td>120</td>
+<td>1</td>
+<td>2013-08</td>
+<td>-3.248904</td>
+<td>-3.825239</td>
+<td>-5601.25</td>
+<td>-6681.25</td>
+<td>3.248904</td>
+<td>2.655543</td>
+<td>5601.25</td>
+<td>4521.25</td>
+<td>2.037736</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">166</th>
+<td>60</td>
+<td>180</td>
+<td>90</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-3.241758</td>
+<td>-3.908310</td>
+<td>-4658.75</td>
+<td>-5698.75</td>
+<td>3.241758</td>
+<td>2.553213</td>
+<td>4658.75</td>
+<td>3618.75</td>
+<td>1.962264</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">258</th>
+<td>90</td>
+<td>180</td>
+<td>120</td>
+<td>1</td>
+<td>2013-08</td>
+<td>-3.340315</td>
+<td>-4.143134</td>
+<td>-4452.50</td>
+<td>-5612.50</td>
+<td>3.340315</td>
+<td>2.508243</td>
+<td>4452.50</td>
+<td>3292.50</td>
+<td>2.188679</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">133</th>
+<td>45</td>
+<td>240</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-3.420858</td>
+<td>-4.296567</td>
+<td>-4427.50</td>
+<td>-5667.50</td>
+<td>3.420858</td>
+<td>2.508086</td>
+<td>4427.50</td>
+<td>3187.50</td>
+<td>2.339623</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">176</th>
+<td>60</td>
+<td>240</td>
+<td>90</td>
+<td>3</td>
+<td>2013-08</td>
+<td>-3.104510</td>
+<td>-3.726690</td>
+<td>-4247.50</td>
+<td>-5167.50</td>
+<td>3.104510</td>
+<td>2.463329</td>
+<td>4247.50</td>
+<td>3327.50</td>
+<td>1.735849</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="84500f83" class="cell" data-execution_count="43">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the same for momentum</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>summary_all_breakout.sort_values(by <span class="op">=</span> <span class="st">'net_SR_mom'</span>,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>                                 ascending <span class="op">=</span> <span class="va">False</span>).head(<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">signalEMA</th>
+<th data-quarto-table-cell-role="th">slowEMA</th>
+<th data-quarto-table-cell-role="th">volat_sd</th>
+<th data-quarto-table-cell-role="th">m</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">gross_SR_mom</th>
+<th data-quarto-table-cell-role="th">net_SR_mom</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mom</th>
+<th data-quarto-table-cell-role="th">net_PnL_mom</th>
+<th data-quarto-table-cell-role="th">gross_SR_mr</th>
+<th data-quarto-table-cell-role="th">net_SR_mr</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mr</th>
+<th data-quarto-table-cell-role="th">net_PnL_mr</th>
+<th data-quarto-table-cell-role="th">av_daily_ntrans</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">80</th>
+<td>30</td>
+<td>180</td>
+<td>120</td>
+<td>3</td>
+<td>2013-08</td>
+<td>2.619997</td>
+<td>2.404288</td>
+<td>1183.75</td>
+<td>1063.75</td>
+<td>-2.619997</td>
+<td>-2.822166</td>
+<td>-1183.75</td>
+<td>-1303.75</td>
+<td>0.226415</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">240</th>
+<td>90</td>
+<td>120</td>
+<td>120</td>
+<td>1</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>116.25</td>
+<td>96.25</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-116.25</td>
+<td>-136.25</td>
+<td>0.037736</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">61</th>
+<td>30</td>
+<td>120</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>52.50</td>
+<td>32.50</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-52.50</td>
+<td>-72.50</td>
+<td>0.037736</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">161</th>
+<td>60</td>
+<td>150</td>
+<td>120</td>
+<td>3</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>52.50</td>
+<td>32.50</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-52.50</td>
+<td>-72.50</td>
+<td>0.037736</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">96</th>
+<td>45</td>
+<td>90</td>
+<td>120</td>
+<td>1</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>52.50</td>
+<td>32.50</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-52.50</td>
+<td>-72.50</td>
+<td>0.037736</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">151</th>
+<td>60</td>
+<td>120</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>52.50</td>
+<td>32.50</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-52.50</td>
+<td>-72.50</td>
+<td>0.037736</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">206</th>
+<td>75</td>
+<td>150</td>
+<td>120</td>
+<td>3</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>35.00</td>
+<td>15.00</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-35.00</td>
+<td>-55.00</td>
+<td>0.037736</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">71</th>
+<td>30</td>
+<td>150</td>
+<td>120</td>
+<td>3</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>33.75</td>
+<td>13.75</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-33.75</td>
+<td>-53.75</td>
+<td>0.037736</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">250</th>
+<td>90</td>
+<td>150</td>
+<td>120</td>
+<td>2</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>42.50</td>
+<td>22.50</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-42.50</td>
+<td>-62.50</td>
+<td>0.037736</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">26</th>
+<td>20</td>
+<td>150</td>
+<td>120</td>
+<td>3</td>
+<td>2013-08</td>
+<td>2.201398</td>
+<td>2.201398</td>
+<td>36.25</td>
+<td>16.25</td>
+<td>-2.201398</td>
+<td>-2.201398</td>
+<td>-36.25</td>
+<td>-56.25</td>
+<td>0.037736</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="b1e23636" class="cell" data-execution_count="44">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># summarize the results for the mr strategy</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co"># in the form of a heatmap</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co"># here we have four parameters</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="co"># signalEMA, slowEMA, volat_sd and m,</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="co"># so to present the results in the form of a heatmap,</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="co"># we need to combine them in pairs</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>summary_all_breakout[<span class="st">"signalEMA_slowEMA"</span>] <span class="op">=</span> (</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout[<span class="st">"signalEMA"</span>].astype(<span class="bu">int</span>).astype(<span class="bu">str</span>).<span class="bu">str</span>.zfill(<span class="dv">3</span>) <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout[<span class="st">"slowEMA"</span>].astype(<span class="bu">int</span>).astype(<span class="bu">str</span>).<span class="bu">str</span>.zfill(<span class="dv">3</span>)</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>summary_all_breakout[<span class="st">"volat_sd_m"</span>] <span class="op">=</span> (</span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout[<span class="st">"volat_sd"</span>].astype(<span class="bu">int</span>).astype(<span class="bu">str</span>).<span class="bu">str</span>.zfill(<span class="dv">3</span>) <span class="op">+</span> <span class="st">"_"</span> <span class="op">+</span></span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout[<span class="st">"m"</span>].astype(<span class="bu">str</span>)</span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>summary_all_breakout.head()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">signalEMA</th>
+<th data-quarto-table-cell-role="th">slowEMA</th>
+<th data-quarto-table-cell-role="th">volat_sd</th>
+<th data-quarto-table-cell-role="th">m</th>
+<th data-quarto-table-cell-role="th">period</th>
+<th data-quarto-table-cell-role="th">gross_SR_mom</th>
+<th data-quarto-table-cell-role="th">net_SR_mom</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mom</th>
+<th data-quarto-table-cell-role="th">net_PnL_mom</th>
+<th data-quarto-table-cell-role="th">gross_SR_mr</th>
+<th data-quarto-table-cell-role="th">net_SR_mr</th>
+<th data-quarto-table-cell-role="th">gross_PnL_mr</th>
+<th data-quarto-table-cell-role="th">net_PnL_mr</th>
+<th data-quarto-table-cell-role="th">av_daily_ntrans</th>
+<th data-quarto-table-cell-role="th">signalEMA_slowEMA</th>
+<th data-quarto-table-cell-role="th">volat_sd_m</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">0</th>
+<td>20</td>
+<td>90</td>
+<td>60</td>
+<td>1</td>
+<td>2013-08</td>
+<td>0.634766</td>
+<td>-1.807507</td>
+<td>1242.50</td>
+<td>-3687.50</td>
+<td>-0.634766</td>
+<td>-3.277214</td>
+<td>-1242.50</td>
+<td>-6172.50</td>
+<td>9.301887</td>
+<td>020_090</td>
+<td>060_1</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">1</th>
+<td>20</td>
+<td>90</td>
+<td>60</td>
+<td>2</td>
+<td>2013-08</td>
+<td>0.554292</td>
+<td>-0.010094</td>
+<td>1021.25</td>
+<td>-18.75</td>
+<td>-0.554292</td>
+<td>-1.127421</td>
+<td>-1021.25</td>
+<td>-2061.25</td>
+<td>1.962264</td>
+<td>020_090</td>
+<td>060_2</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">2</th>
+<td>20</td>
+<td>90</td>
+<td>60</td>
+<td>3</td>
+<td>2013-08</td>
+<td>-0.948394</td>
+<td>-1.359925</td>
+<td>-318.75</td>
+<td>-458.75</td>
+<td>0.948394</td>
+<td>0.531800</td>
+<td>318.75</td>
+<td>178.75</td>
+<td>0.264151</td>
+<td>020_090</td>
+<td>060_3</td>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th">3</th>
+<td>20</td>
+<td>90</td>
+<td>90</td>
+<td>1</td>
+<td>2013-08</td>
+<td>1.811271</td>
+<td>-0.299235</td>
+<td>3592.50</td>
+<td>-617.50</td>
+<td>-1.811271</td>
+<td>-4.084996</td>
+<td>-3592.50</td>
+<td>-7802.50</td>
+<td>7.943396</td>
+<td>020_090</td>
+<td>090_1</td>
+</tr>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">4</th>
+<td>20</td>
+<td>90</td>
+<td>90</td>
+<td>2</td>
+<td>2013-08</td>
+<td>-1.977509</td>
+<td>-2.523756</td>
+<td>-135.00</td>
+<td>-195.00</td>
+<td>1.977509</td>
+<td>1.212338</td>
+<td>135.00</td>
+<td>75.00</td>
+<td>0.113208</td>
+<td>020_090</td>
+<td>090_2</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="361e2df0" class="cell" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># now we can plot the heatmap</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>plot_heatmap(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>    value_col <span class="op">=</span> <span class="st">'net_SR_mr'</span>,</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>    index_col <span class="op">=</span> <span class="st">'signalEMA_slowEMA'</span>,</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>    columns_col <span class="op">=</span> <span class="st">'volat_sd_m'</span>,</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">'Net Sharpe Ratio (MR strategy)'</span>,</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> <span class="st">"coolwarm"</span></span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-22-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="e45d265a" class="cell" data-execution_count="49">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># the highest net SR are for signalEMA = 20 and slowEMA = 180</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># let's check the sensitivity analysis of SR to m and volat_sd</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># we select only rows with values of signalEMA and slowEMA</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>summary_all_breakout_wybrane <span class="op">=</span> summary_all_breakout[</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>    (summary_all_breakout[<span class="st">'signalEMA'</span>] <span class="op">==</span> <span class="dv">20</span>) <span class="op">&amp;</span> (summary_all_breakout[<span class="st">'slowEMA'</span>] <span class="op">==</span> <span class="dv">180</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a><span class="co"># and we create a heatmap for them</span></span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>plot_heatmap(</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout_wybrane,</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>    value_col <span class="op">=</span> <span class="st">'net_SR_mr'</span>,</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>    index_col <span class="op">=</span> <span class="st">'volat_sd'</span>,</span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>    columns_col <span class="op">=</span> <span class="st">'m'</span>,</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">'Net Sharpe Ratio (MR strategy)'</span>,</span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> <span class="st">"coolwarm"</span></span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a><span class="co"># wygląda trochę jak anomalia, bo wokół wartości są sporo niższe</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-23-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<div id="6505c792" class="cell" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># heatmap plot can also be used to analyze transaction frequency</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>plot_heatmap(</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    summary_all_breakout_wybrane,</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    value_col <span class="op">=</span> <span class="st">'av_daily_ntrans'</span>,</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    index_col <span class="op">=</span> <span class="st">'volat_sd'</span>,</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    columns_col <span class="op">=</span> <span class="st">'m'</span>,</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    title <span class="op">=</span> <span class="st">'Average Daily Number of Transactions (MR strategy)'</span>,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>    cmap <span class="op">=</span> <span class="st">"Blues"</span>)</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># in line with expectations</span></span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>    <span class="co"># the larger the m, the fewer the transactions</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="HFD_07_files/figure-html/cell-24-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises-7" class="level1">
+<h1>Exercises 7</h1>
+</section>
+<section id="exercise-7.1" class="level1">
+<h1>Exercise 7.1</h1>
+<p>Check the profitability of the same strategy on the test data for E6.</p>
+<ul>
+<li>Is the best-performing combination still profitable?</li>
+<li>How does its test net SR differ from that in the training data?</li>
+<li>Use graphs to verify the sensitivity of the results to the parameters.</li>
+</ul>
+<div id="b3fbf430" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># place for solution to Exercise 7.1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-7.2" class="level1">
+<h1>Exercise 7.2</h1>
+<p>Perform similar analyses for another currency (other than E6).</p>
+<ul>
+<li>Use MORE parameter combinations.</li>
+<li>Are the conclusions for the training and test data similar to those for E6?</li>
+</ul>
+<div id="77927254" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="co"># place for solution to Exercise 7.2</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="exercise-7.3" class="level1">
+<h1>Exercise 7.3</h1>
+<p>Analyze a mean-reverting strategy for a spread between the Canadian dollar C6 and the Australian dollar A6 (assume the simplest form: C6-A6).</p>
+<p>Remember that transaction costs are ALWAYS positive, regardless of whether you are long or short.</p>
+<div id="51fe8a9a" class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="co"># place for solution to Exercise 7.3</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
